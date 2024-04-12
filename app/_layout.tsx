@@ -9,7 +9,6 @@ import * as SecureStore from 'expo-secure-store';
 
 
 const EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
-console.log(EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY);
 const tokenCache = {
   async getToken(key: string) {
     try {
@@ -33,7 +32,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
+  initialRouteName: 'back',
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -42,12 +41,12 @@ SplashScreen.preventAutoHideAsync();
 const InitialLayout=()=> {
   const router = useRouter();
 const {isLoaded, isSignedIn}= useAuth();
-useEffect(()=>{
-  if(isLoaded && !isSignedIn){
-    router.push('/(modals)/login');
-  }
-}
-,[isLoaded]);
+// useEffect(()=>{
+//   if(isLoaded && !isSignedIn){
+//     router.push('/(modals)/login');
+//   }
+// }
+// ,[isLoaded]);
   const [loaded, error] = useFonts({
     'mon' :require('../assets/fonts/Montserrat-Regular.ttf'),
     'mon-sb': require('../assets/fonts/Montserrat-SemiBold.ttf'),
